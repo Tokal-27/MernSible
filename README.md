@@ -97,4 +97,4 @@ project Tree
 
 ## License
 
-This project is licensed under the MIT-0 License and Owner to ** Omar Khaled Tokal**
+This project is licensed under the MIT-0 License and Owner to Omar Khaled Tokal
