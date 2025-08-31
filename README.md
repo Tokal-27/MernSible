@@ -1,22 +1,81 @@
 # MERN Stack Ansible Project
 
-This repository contains Ansible playbooks and roles for deploying a MERN (MongoDB, Express.js, React, Node.js) stack application.
+This repository contains Ansible playbooks and roles for deploying and automation a MERN (MongoDB, Express.js, React, Node.js) stack application.
 
-## Project Structure
+## Project Tree  
 
-- `ansible-multipass.yaml`: Playbook for setting up virtual machines using Multipass.
-- `ansible.cfg`: Ansible configuration file.
-- `commands`: A file that might contain useful commands or scripts.
-- `group_vars/`: Directory containing variable definitions for groups of hosts.
-  - `all.yml`: Variables applicable to all hosts.
-  - `webserver.yaml`: Variables specific to webserver hosts.
-- `inventory/`: Contains the Ansible inventory file.
-  - `hosts`: Defines the hosts and groups for the Ansible deployment.
-- `playbook.yml`: The main Ansible playbook for deploying the MERN stack.
-- `roles/`: Directory containing individual Ansible roles.
-  - `comman/`: Role for common system configurations and package installations.
-  - `dbserver/`: Role for deploying and configuring MongoDB.
-  - `webserver/`: Role for deploying and configuring the Node.js/React web application.
+```
+.
+├── ansible.cfg
+├── ansible-multipass.yaml
+├── commands
+├── group_vars
+│   ├── all.yml
+│   └── webserver.yaml
+├── inventory
+│   └── hosts
+├── playbook.yml
+└── roles
+    ├── comman
+    │   ├── defaults
+    │   │   └── main.yml
+    │   ├── files
+    │   ├── handlers
+    │   │   └── main.yml
+    │   ├── meta
+    │   │   └── main.yml
+    │   ├── README.md
+    │   ├── tasks
+    │   │   └── main.yml
+    │   ├── templates
+    │   ├── tests
+    │   │   ├── inventory
+    │   │   └── test.yml
+    │   └── vars
+    │       └── main.yml
+    ├── dbserver
+    │   ├── defaults
+    │   │   └── main.yml
+    │   ├── files
+    │   ├── handlers
+    │   │   └── main.yml
+    │   ├── meta
+    │   │   └── main.yml
+    │   ├── README.md
+    │   ├── tasks
+    │   │   ├── configure.yaml
+    │   │   ├── install.yaml
+    │   │   └── main.yml
+    │   ├── templates
+    │   │   ├── mongod.conf.j2
+    │   │   └── mongoshrc.js.j2
+    │   ├── tests
+    │   │   ├── inventory
+    │   │   └── test.yml
+    │   └── vars
+    │       └── main.yml
+    └── webserver
+        ├── defaults
+        │   └── main.yml
+        ├── files
+        │   └── App.css
+        ├── handlers
+        │   └── main.yml
+        ├── meta
+        │   └── main.yml
+        ├── README.md
+        ├── tasks
+        │   └── main.yml
+        ├── templates
+        │   └── App.js.j2
+        ├── tests
+        │   ├── inventory
+        │   └── test.yml
+        └── vars
+            └── main.yml
+
+31 directories, 37 files
+
 
 ## Roles Overview
 
