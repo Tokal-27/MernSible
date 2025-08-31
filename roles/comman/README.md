@@ -1,38 +1,40 @@
-Role Name
+Role Name = Ansible Role: comman
 =========
+This role provides common system setup tasks required for the MERN stack project.  
+It ensures that essential packages, users, groups, and SSH keys are configured consistently across all servers.
 
-A brief description of the role goes here.
-
-Requirements
+Features
 ------------
-
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
-
+- Updates all system packages to the latest version.
+- Installs a list of common packages (`comman_packages`).
+- Generates SSH key pairs for specified users.
+- Creates user groups and users with desired privileges.
+- Adds authorized SSH keys for secure login.
+ 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
-
-Dependencies
-------------
-
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+Available variables are defined in `vars/main.yml` and `group_vars/main.yml`:
 
 Example Playbook
 ----------------
+- hosts: all
+  become: true
+  roles:
+    - comman
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
 
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
+Dependency 
+-----------
 
-License
--------
+```yaml
+comman_packages:
+  - git
+  - curl
+  - vim
 
-BSD
-
-Author Information
-------------------
-
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+users:
+  - name: mern
+    group: mern
+    state: present
+    key: /tmp/mern_id_rsa
