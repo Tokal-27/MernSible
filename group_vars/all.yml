@@ -1,0 +1,6 @@
+users:
+  - name: mern
+    group: mern
+    state: present
+    path: "/tmp/mern_id_rsa"
+    key: "/tmp/mern_id_rsa"

@@ -1,0 +1,22 @@
+---
+- name: install some comman packages
+  become: true
+  hosts: all
+  gather_facts: true
+  roles:
+    - comman
+
+- name: install the webserver
+  become: true
+  hosts: webserver
+  gather_facts: false
+  roles:
+    - webserver
+
+
+- name: Install and configure the database server
+  gather_facts: true
+  become: true
+  hosts: dbservers
+  roles:
+    - dbserver

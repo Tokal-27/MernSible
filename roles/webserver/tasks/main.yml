@@ -1,0 +1,59 @@
+#SPDX-License-Identifier: MIT-0
+---
+# tasks file for roles/webserver
+- name: install node.js and npm
+  ansible.builtin.apt:
+    pkg :
+      - nodejs
+      - npm
+    state: present
+
+- name: create the app directory
+  ansible.builtin.file:
+    path: "/{{ app_dir }}"
+    state: directory
+    owner: "{{ users[0].name }}"
+    group: "{{ users[0].group }}"
+    mode: '0755'
+
+- name : install some npm packages 
+  ansible.builtin.npm:
+    name: "{{ item }}"
+    global: yes
+  loop: "{{ npm_packages }}"
+
+- name: create react app
+  ansible.builtin.command: 
+    cmd: "npx create-react-app {{ app_name }}"
+    chdir: "/{{ app_dir }}"
+  args:
+    creates: "/{{ app_dir }}/{{ app_name }}"
+
+- name: Configure react app to listen on 0.0.0.0
+  ansible.builtin.lineinfile:
+    path: "/{{ app_dir }}/{{ app_name }}/.env"
+    line: "HOST=0.0.0.0"
+    create: yes
+
+- name: deploy custom page
+  ansible.builtin.copy:
+    src : App.css
+    dest: "/{{ app_dir }}/{{ app_name }}/src/App.css"
+    mode : '0644'
+  when: deploy_custom_page
+
+- name: Deploy custom page
+  ansible.builtin.template:
+    src : App.js.j2
+    dest: "/{{ app_dir }}/{{ app_name }}/src/App.js"
+    mode : '0644'
+    veriable_start_string: "{[%]"
+    veriable_end_string: "%]}"
+  when: deploy_custom_page
+
+- name: Start the Development server
+  ansible.builtin.command:
+    cmd: pm2 start npm  -- start --watch
+    chdir: "/{{ app_dir }}/{{ app_name }}"
+
+

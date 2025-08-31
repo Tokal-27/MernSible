@@ -1,0 +1,2 @@
+multipass launch -n webserver --cloud-init ansible-multipass.yaml --cpus 4 --memory 4G --disk 10G
+multipass launch -n dbserver --cloud-init ansible-multipass.yaml  --disk 10G

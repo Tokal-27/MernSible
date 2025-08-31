@@ -1,0 +1,17 @@
+#SPDX-License-Identifier: MIT-0
+---
+# vars file for roles/webserver
+app_dir: /opt/my_react_app
+
+
+npm_packages:
+  - express
+  - create-react-app
+  - pm2
+  
+
+app_name: my_app
+
+react_app:
+  title: "Custom React App"
+  message: "This is simple React application deployed with Ansible!"

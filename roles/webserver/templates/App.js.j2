@@ -1,0 +1,21 @@
+import React from 'react';
+import './App.css';
+
+function App() {
+  return (
+    <div >
+        <header>
+            <h1>{[% react_app.title | default('My React App') %]}</h1>
+            <p>{[% react_app.message | default('This is Custom React page manged by Ansible!') %]}</p>
+        </header>
+        <div className="imge-container">
+            <img src="{[% react_app.image_url | default('https://via.placeholder.com/600x400') %]}" alt="React Logo" />
+        </div>
+        <footer>
+        <p> Powerd By React & Ansible </p>
+        </footer>
+    </div>
+  );
+}
+
+export default App;   

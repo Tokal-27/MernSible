@@ -1,0 +1,12 @@
+app_dir: var/www/mern-app
+npm_packages:
+  - express #nodejs framework
+  - create-react-app #reactjs cli
+  - pm2 #process manager for nodejs
+
+app_name: my_app
+react_app:
+  title: Custom React App
+  message: This is simple React application deployed with Ansible!
+
+deploy_custom_page: true

@@ -1,0 +1,10 @@
+// templates/mongoshsrc.js.j2
+
+const uri = "mongodb://{{ mongodb_root_user }}:{{ mongodb_root_password }}@localhost:{{ mongodb_port }}";
+
+const dbName = "admin";
+
+
+const connection = new Mongo(uri);
+
+const db = connection.getDB(dbName);

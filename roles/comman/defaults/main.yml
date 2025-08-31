@@ -1,0 +1,8 @@
+---
+# defaults file for roles/comman
+comman_packages:
+  - ntp
+  - git
+  - vim
+  - unzip
+  - curl

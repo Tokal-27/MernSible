@@ -1,0 +1,77 @@
+- name: Install pip
+
+  apt:
+
+    name: python3-pip
+
+    state: present
+
+- name: Allow PIP to install packages globally
+
+  ansible.builtin.file:
+
+    path: /usr/lib/python3.12/EXTERNALLY-MANAGED
+
+    state: absent
+
+- name: Install pymongo
+
+  pip:
+
+    name: "{{ item }}"
+
+    state: latest
+
+    executable: pip3
+
+  loop:
+
+    - pymongo
+
+    - configparser
+
+
+- name: Add MongoDB repository using deb822_repository
+
+  ansible.builtin.deb822_repository:
+
+    name: mongodb
+
+    types: deb
+
+    uris: "https://repo.mongodb.org/apt/ubuntu"
+
+    components: [multiverse]
+
+    architectures: [amd64, arm64]
+
+    suites: "{{ ansible_distribution_release }}/mongodb-org/{{ mongodb_version }}"
+
+    signed_by: "https://www.mongodb.org/static/pgp/server-{{ mongodb_version }}.asc"
+
+
+- name: Update apt package cache
+
+  ansible.builtin.apt:
+
+    update_cache: true
+
+
+- name: Install MongoDB packages
+
+  ansible.builtin.apt:
+
+    name: mongodb-org
+
+    state: present
+
+
+- name: Ensure MongoDB is enabled and started
+
+  ansible.builtin.service:
+
+    name: mongod
+
+    state: started
+
+    enabled: true

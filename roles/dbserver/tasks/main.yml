@@ -1,0 +1,9 @@
+#SPDX-License-Identifier: MIT-0
+---
+# tasks file for roles/dbserver
+- name: Include installation tasks
+  include_tasks: install.yaml
+
+
+- name: Include configuration tasks
+  include_tasks: configure.yaml

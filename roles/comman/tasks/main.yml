@@ -1,0 +1,40 @@
+---
+# tasks file for roles/comman
+- name: update all the packages
+  ansible.builtin.apt:
+    name: '*'
+    state: latest
+    update_cache: yes
+    
+  
+- name: install some comman packages
+  ansible.builtin.apt:
+    pkg: "{{ comman_packages }}"
+    state: present
+
+- name: generate local key pair
+  community.crypto.openssh_keypair:
+    path : "{{ item.path }}"
+  loop: "{{ users }}"
+  delegate_to: localhost
+  become: false
+
+- name: add group
+  ansible.builtin.group:
+    name: "{{ item.group }}"
+    state: "{{ item.state }}"
+  loop: "{{ users }}"
+
+- name: add users to group
+  ansible.builtin.user:
+    name: "{{ item.name }}"
+    group: "{{ item.group }}"
+    comment : "{{ item.name }} user" #user name as comment
+    state: "{{ item.state }}"
+  loop: "{{ users }}"
+
+- name: add authorized keys
+  ansible.builtin.authorized_key:
+    user: "{{ item.name }}"
+    key: "{{ lookup('file', item.key ~ '.pub') }}"
+  loop: "{{ users }}"

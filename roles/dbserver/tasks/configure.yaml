@@ -1,0 +1,88 @@
+- name: Create MongoDB data directory
+
+  ansible.builtin.file:
+
+    path: "{{ mongodb_data_path }}"
+
+    state: directory
+
+    owner: mongodb
+
+    group: mongodb
+
+    mode: '0755'
+
+
+- name: Template MongoDB configuration file
+
+  ansible.builtin.template:
+
+    src: mongod.conf.j2
+
+    dest: "{{ mongodb_config_path }}"
+
+    owner: root
+
+    group: root
+
+    mode: '0644'
+
+  notify: Restart MongoDB
+
+
+- name: Check if .mongorc.js file exists
+
+  stat:
+
+    path: /root/.mongorc.js
+
+  register: mongorc_file
+
+
+- name: Create MongoDB root user
+
+  mongodb_user:
+
+    database: "admin"
+
+    name: "{{ mongodb_root_user }}"
+
+    password: "{{ mongodb_root_password }}"
+
+    roles: "root"
+
+  when: not mongorc_file.stat.exists
+
+
+- name: Deploy MongoDB .mongorc.js file for root user
+
+  template:
+
+    src: mongoshsrc.js.j2
+
+    dest: ~/.mongoshrc.js
+
+    mode: '0600'
+
+  notify:
+
+    - Restart MongoDB
+
+
+- name: Enable authentication in MongoDB
+
+  lineinfile:
+
+    path: /etc/mongod.conf
+
+    line: "security:\n  authorization: enabled"
+
+    insertafter: "^#security:"
+
+    state: present
+
+    backup: yes
+
+  notify:
+
+    - Restart MongoDB
