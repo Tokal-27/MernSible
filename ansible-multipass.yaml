@@ -5,4 +5,4 @@ users :
     shell: /bin/bash
     groups: sudo
     ssh_authorized_keys:
-      - "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCr59b8rmS+HJIZrxiJicPIzraMpsMAapaOewATbM7MV8jtrilBPcT85WFfaa3URVtqAv10A7XanyOImiOUb+8EXz0JVnsX1E1vZzyFjqzNS1raU9j5pb7Ah8txSuJrncQRG7Zw35eBbOS3eQgUfimHHaw3TmeY78tptUfWkDH3xksFVYbaHOusQxmIcfXo77Eye4Q4Q2IhG1y1VfQ/Zy3asWpApvijf30xa9HBS0M2dX3fW/ECHpud4bI33MsHSlW22LhzHdjcM1G5QcOXhvJRPcyBdx9mu0EACoTBMLU8vDDkYHTZcjDRC6NpWA7nrKQ5rdZKZaO5MPzRS006xZYEzURM64Ap/XcIaLcChAxFoePIFF4WfHpEIML27Y+jNBqDCVOlBGnqCKJPeL6XPsSwKGLW8I1nGsF0MPmsVPttmzBJ5/sBQlOQlL5illXJr6/Gc5yBV4iYL99wIorQkD1HcuWaeM1ElvaTZnMFI5j/oXyE99YBhF7hsVi778PiAh8= tokal@tokal-HP-Laptop-15s-eq2xxx"
+      - "Public_key"
