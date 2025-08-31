@@ -4,8 +4,8 @@ ansible_user=ansibleadmin
 ansible_private_key_file=~/.ssh/id_rsa
 
 [webservers]
-webserver ansible_host=10.213.7.215
+webserver ansible_host=#VM ip
 
 [dbservers]
-dbserver ansible_host=10.213.7.204
+dbserver ansible_host=#VM ip
 
