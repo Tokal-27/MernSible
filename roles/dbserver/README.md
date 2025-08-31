@@ -1,4 +1,4 @@
-# Dbserver Role
+# DBserver Role
 
 This README provides comprehensive documentation for the `dbserver` Ansible role, which automates the deployment and configuration of a MongoDB database server. This role is designed to be idempotent and handles the installation of MongoDB, its dependencies, and the initial configuration, including user creation and security settings.
 
