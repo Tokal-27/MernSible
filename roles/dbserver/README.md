@@ -129,3 +129,7 @@ To deploy a MongoDB server using this role:
     Remember to replace `your_secure_password_here` with a strong password for your MongoDB root user.
 
 
+    **license**:
+     his project is licensed under the MIT-0 License. See the `README.md` in the root of the Ansible project for more details.
+
+
