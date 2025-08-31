@@ -75,7 +75,7 @@ This repository contains Ansible playbooks and roles for deploying and automatio
             └── main.yml
 
 31 directories, 37 files
-
+```
 
 ## Roles Overview
 
@@ -91,8 +91,8 @@ To use this Ansible project, you will typically:
 2.  **Adjust variables**: Modify variables in `group_vars/` or role-specific `defaults/main.yml` as needed.
 3.  **Run the main playbook**: Execute `ansible-playbook playbook.yml` to deploy the entire MERN stack.
 
-For detailed information on each role, refer to their respective `README.md` files located in `roles/<role_name>/README.md`.
 
+## For detailed information on each role, refer to their respective `README.md` files located in `roles/<role_name>/README.md`.
 
 ##  author: Omar Khaled Tokal
 ## description: Cloud Devops Enginner 
