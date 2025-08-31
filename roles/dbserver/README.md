@@ -128,8 +128,4 @@ To deploy a MongoDB server using this role:
 
     Remember to replace `your_secure_password_here` with a strong password for your MongoDB root user.
 
-## Author
 
-Manus AI
-
-## License
