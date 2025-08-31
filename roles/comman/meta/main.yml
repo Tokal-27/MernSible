@@ -1,13 +1,15 @@
 #SPDX-License-Identifier: MIT-0
 galaxy_info:
   author: Omar Khaled Tokal
-  description: Cloud Devops Enginner 
-  company: Freelancer 
+  description: handles common system configurations, package installations, and user management across various servers.
+  
 
   # If the issue tracker for your role is not on github, uncomment the
   # next line and provide a value
   # issue_tracker_url: http://example.com/issue/tracker
-
+platforms:
+- name :Ubuntu
+  version : 22.04
   # Choose a valid license ID from https://spdx.org - some suggested licenses:
   # - BSD-3-Clause (default)
   # - MIT
@@ -17,7 +19,7 @@ galaxy_info:
   # - CC-BY-4.0
   license: license (GPL-2.0-or-later, MIT, etc)
 
-  min_ansible_version: 2.1
+  min_ansible_version: core 2.18.8
 
   # If this a Container Enabled role, provide the minimum Ansible Container version.
   # min_ansible_container_version:
