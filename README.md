@@ -1,100 +1,57 @@
-# MERN Stack Ansible Project
+# MernSible – Ansible Automation for MERN Stack
 
-This repository contains Ansible playbooks and roles for deploying and automation a MERN (MongoDB, Express.js, React, Node.js) stack application.
+**MernSible** is an Ansible-based automation project that streamlines the deployment of a complete **MERN (MongoDB, Express, React, Node.js)** environment.  
+It is built around three modular roles:  
 
-## Roles Overview
+- **Comman** → standard system setup and user management  
+- **DBserver** → automated MongoDB deployment and configuration  
+- **Webserver** → Node.js & React application setup and deployment  
 
-- **`Comman`**: Handles basic system setup, common package installations (e.g., `ntp`, `git`, `vim`), user and group management, and SSH key deployment.
-- **`Dbserver`**: Installs and configures MongoDB, including repository setup, package installation, data directory creation, and initial user setup.
-- **`Webserver`**: Sets up the Node.js environment, deploys a React application, installs npm packages, and manages the application's lifecycle.
+This structure ensures **consistency, scalability, and security** across environments, making it ideal for development, testing, or production-ready deployments.  
 
-## Usage
+---
 
-To use this Ansible project, you will typically:
+## 📌 Project Overview
 
-1.  **Configure your inventory**: Update `inventory/hosts` with your target server details.
-2.  **Adjust variables**: Modify variables in `group_vars/` or role-specific `defaults/main.yml` as needed.
-3.  **Run the main playbook**: Execute `ansible-playbook playbook.yml` to deploy the entire MERN stack.
+MernSible simplifies the often complex process of provisioning and configuring infrastructure for modern web applications.  
+With just a few Ansible playbooks, you can:  
 
-project Tree  
+- Standardize server setup (users, SSH keys, common packages).  
+- Deploy a fully configured MongoDB database with authentication.  
+- Launch a Node.js + React web application, managed by **pm2**.  
 
-```
-.
-├── ansible.cfg
-├── ansible-multipass.yaml
-├── commands
-├── group_vars
-│   ├── all.yml
-│   └── webserver.yaml
-├── inventory
-│   └── hosts
-├── playbook.yml
-└── roles
-    ├── comman
-    │   ├── defaults
-    │   │   └── main.yml
-    │   ├── files
-    │   ├── handlers
-    │   │   └── main.yml
-    │   ├── meta
-    │   │   └── main.yml
-    │   ├── README.md
-    │   ├── tasks
-    │   │   └── main.yml
-    │   ├── templates
-    │   ├── tests
-    │   │   ├── inventory
-    │   │   └── test.yml
-    │   └── vars
-    │       └── main.yml
-    ├── dbserver
-    │   ├── defaults
-    │   │   └── main.yml
-    │   ├── files
-    │   ├── handlers
-    │   │   └── main.yml
-    │   ├── meta
-    │   │   └── main.yml
-    │   ├── README.md
-    │   ├── tasks
-    │   │   ├── configure.yaml
-    │   │   ├── install.yaml
-    │   │   └── main.yml
-    │   ├── templates
-    │   │   ├── mongod.conf.j2
-    │   │   └── mongoshrc.js.j2
-    │   ├── tests
-    │   │   ├── inventory
-    │   │   └── test.yml
-    │   └── vars
-    │       └── main.yml
-    └── webserver
-        ├── defaults
-        │   └── main.yml
-        ├── files
-        │   └── App.css
-        ├── handlers
-        │   └── main.yml
-        ├── meta
-        │   └── main.yml
-        ├── README.md
-        ├── tasks
-        │   └── main.yml
-        ├── templates
-        │   └── App.js.j2
-        ├── tests
-        │   ├── inventory
-        │   └── test.yml
-        └── vars
-            └── main.yml
+The modular roles allow flexibility—use them individually or together depending on your project needs.  
 
-31 directories, 37 files
-```
+---
 
+## 🚀 Roles
 
- For detailed information on each role, refer to their respective `README.md` files located in `roles/<role_name>/README.md`.
+### 1. Comman Role
+Handles **baseline server setup**:  
+- Updates packages and installs essential tools.  
+- Creates users, groups, and SSH key pairs.  
+- Ensures a secure and consistent configuration across all nodes.  
 
+---
 
-## License
+### 2. DBserver Role
+Automates **MongoDB deployment and security**:  
+- Installs MongoDB from the official repository.  
+- Configures data directory, bind IP, and ports.  
+- Creates root users with credentials.  
+- Enables authentication for production-ready security.  
 
-This project is licensed under the MIT-0 License and Owner to Omar Khaled Tokal
+---
+
+### 3. Webserver Role
+Prepares and runs the **Node.js + React application stack**:  
+- Installs Node.js, npm, and required global packages.  
+- Creates and configures the app directory.  
+- Bootstraps a React app with `create-react-app`.  
+- Starts and manages the app with **pm2** for reliability.  
+- Supports custom pages for branding or business needs.  
+
+---
+
+## 📂 Project Structure
+
